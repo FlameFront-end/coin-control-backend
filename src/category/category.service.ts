@@ -47,7 +47,7 @@ export class CategoryService {
   }
 
   async findOne(id: number) {
-    const category = await this.categoryRepository.find({
+    const category = await this.categoryRepository.findOne({
       where: {
         id
       },
@@ -57,7 +57,7 @@ export class CategoryService {
       }
     })
 
-    if (!category.length) {
+    if (!category) {
       throw new NotFoundException('Category not found')
     }
 
